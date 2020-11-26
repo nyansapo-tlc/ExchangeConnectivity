@@ -1,10 +1,12 @@
 package Nyansapo.exchangeConnectivity;
 
 public class Order {
+
     private String product;
     private double quantity;
     private String side;
     private double price;
+    private String exchange_path;
 
 
     public Order(String product, double quantity, String side, double price) {
@@ -13,7 +15,15 @@ public class Order {
         this.side = side;
         this.price = price;
     }
-    
+
+    public Order(String product, double quantity, String side, double price, String exchange_path) {
+        this.product = product;
+        this.quantity = quantity;
+        this.side = side;
+        this.price = price;
+        this.exchange_path = exchange_path;
+    }
+
     public Order(){ };
 
     public double getPrice() {
