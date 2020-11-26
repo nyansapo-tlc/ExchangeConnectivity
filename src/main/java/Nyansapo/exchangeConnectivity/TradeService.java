@@ -12,7 +12,7 @@ public class TradeService {
 
     private final String API_KEY = "bd0f2680-2e42-4b25-9971-7c7c441f07dc";
     
-    private WebClient webClient = WebClient.builder().baseUrl("https://exchange.matraining.com")
+    private WebClient webClient = WebClient.builder().baseUrl()
             .defaultHeader("Content-Type", "application/json").build();
 
     // private WebClient webClient1 = WebClient.builder().baseUrl("https://exchange2.matraining.com")

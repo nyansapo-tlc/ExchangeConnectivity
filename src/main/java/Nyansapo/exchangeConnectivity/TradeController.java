@@ -25,7 +25,7 @@ public class TradeController {
     }
     
     @PostMapping(value="/order")
-    public Mono<String> sendOrderToExchange(@RequestBody Order order) {
+    public Mono<String> sendOrderToMallonExchange(@RequestBody Order order) {
         return tradeService.sendOrderToExchange(order);
     }
     
