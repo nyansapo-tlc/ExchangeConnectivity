@@ -9,6 +9,7 @@ import reactor.core.publisher.Mono;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestParam;
 
 
 @CrossOrigin(origins = "*", allowedHeaders = "*")
@@ -19,14 +20,14 @@ public class TradeController {
     private TradeService tradeService;
 
     @GetMapping("/md")
-    public Flux<Trade> getMarketDataFromExchange1() {
-        Flux<Trade> returnedList = tradeService.getMarketDataFromExchange();
+    public Flux<Trade> getMarketDataFromExchange1(@RequestParam String exchangePath) {
+        Flux<Trade> returnedList = tradeService.getMarketDataFromExchange(exchangePath);
         return returnedList;
     }
     
     @PostMapping(value="/order")
     public Mono<String> sendOrderToMallonExchange(@RequestBody Order order) {
-        return tradeService.sendOrderToExchange(order);
+        return tradeService.sendOrderToExchange(order, order.getExchangePath());
     }
     
 }

@@ -1,12 +1,15 @@
 package Nyansapo.exchangeConnectivity;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+
 public class Order {
 
     private String product;
     private double quantity;
     private String side;
     private double price;
-    private String exchange_path;
+    @JsonProperty("baseURL")
+    private String exchangePath;
 
 
     public Order(String product, double quantity, String side, double price) {
@@ -21,7 +24,7 @@ public class Order {
         this.quantity = quantity;
         this.side = side;
         this.price = price;
-        this.exchange_path = exchange_path;
+        this.exchangePath = exchange_path;
     }
 
     public Order(){ };
@@ -55,6 +58,14 @@ public class Order {
 
     public void setSide(String side) {
         this.side = side;
+    }
+
+    public String getExchangePath() {
+        return exchangePath;
+    }
+
+    public void setExchangePath(String exchange_path){
+        this.exchangePath = exchange_path;
     }
 
     @Override
