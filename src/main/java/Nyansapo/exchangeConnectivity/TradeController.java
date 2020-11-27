@@ -12,21 +12,19 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
-@CrossOrigin
+
 @RestController
 public class TradeController {
 
     @Autowired
     private TradeService tradeService;
 
-    @CrossOrigin(origins = "*")
     @GetMapping("/md")
     public Flux<Trade> getMarketDataFromExchange1(@RequestParam(defaultValue="https://exchange.matraining.com") String exchangePath) {
         Flux<Trade> returnedList = tradeService.getMarketDataFromExchange(exchangePath);
         return returnedList;
     }
     
-    @CrossOrigin(origins = "*")
     @PostMapping(value="/order")
     public Mono<String> sendOrderToMallonExchange(@RequestBody Order order) {
         return tradeService.sendOrderToExchange(order, order.getExchangePath());
