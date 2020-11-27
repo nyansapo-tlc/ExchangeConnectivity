@@ -20,8 +20,8 @@ public class TradeController {
     private TradeService tradeService;
 
     @GetMapping("/md")
-    public Flux<Trade> getMarketDataFromExchange1(@RequestParam String exchangePath) {
-        Flux<Trade> returnedList = tradeService.getMarketDataFromExchange();
+    public Flux<Trade> getMarketDataFromExchange1(@RequestParam(defaultValue="https://exchange.matraining.com") String exchangePath) {
+        Flux<Trade> returnedList = tradeService.getMarketDataFromExchange(exchangePath);
         return returnedList;
     }
     
